@@ -8,7 +8,7 @@ import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
-import Seo from "../components/seo/Seo"
+import { Head as SeoHead } from "../components/seo/Seo"
 
 const CardWrapper = styled.div`
   margin-top: 3rem;
@@ -30,7 +30,6 @@ const CardWrapper = styled.div`
 export default function Home({ data }) {
   return (
     <>
-      <Seo title="Kontakt" slug="/kontakt" />
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -43,10 +42,16 @@ export default function Home({ data }) {
       </Baner>
       <Container>
         <Heading>
-          <h1>Aktualności</h1>
-          <p>Najnowsze informacje o wydarzeniach z naszego przedszkola</p>
+          <h1>Home</h1>
+          <p>Witaj na naszej stronie EmtechQ</p>
         </Heading>
       </Container>
     </>
   )
 }
+export const Head = () => (
+  <SeoHead
+    title="EmtechQ - strona główna"
+    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+  />
+)

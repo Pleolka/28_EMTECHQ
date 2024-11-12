@@ -7,12 +7,11 @@ import styled from "styled-components"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
-import Seo from "../components/seo/Seo"
+import { Head as SeoHead } from "../components/seo/Seo"
 
 const Page404 = () => {
   return (
     <>
-      <Seo title="Kontakt" slug="/kontakt" />
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -25,11 +24,19 @@ const Page404 = () => {
       </Baner>
       <Container>
         <Heading>
-          <h1>Aktualności</h1>
-          <p>Najnowsze informacje o wydarzeniach z naszego przedszkola</p>
+          <h1>404</h1>
+          <p>Upsss... Strona której szukasz nie ustnie.</p>
         </Heading>
       </Container>
     </>
   )
 }
+
+export const Head = () => (
+  <SeoHead
+    title="Strona Główna - EmtechQ"
+    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+  />
+)
+
 export default Page404

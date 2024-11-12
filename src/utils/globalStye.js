@@ -24,7 +24,7 @@ section {
 
 body {
     background-color: transparent;
-    font-size: ${({ theme }) => theme.font.size};
+    font-size: 16px;
     font-family: ${({ theme }) => theme.font.main};
     color: ${({ theme }) => theme.color.font};
     font-weight: ${({ theme }) => theme.font.weight};
@@ -33,6 +33,10 @@ body {
     margin: 0;
     padding: 0;
     
+}
+
+html{
+    font-size: 16px;
 }
 
 p {
@@ -133,8 +137,8 @@ h3 {
 }
 
 h4 {
-    font-size: ${props => props.xl || props.theme.font.size.h4.xl};
-    line-height: ${props => props.lineHeight || props.theme.font.lineH.h4.xl};
+    font-size: clamp(1.125rem, 0.595vw + 0.911rem, 1.625rem); //18-26
+    line-height: 1.2;
 }
 
 h5 {
@@ -189,7 +193,7 @@ label {
   font-size: ${props => props.l || props.theme.font.size.l.xl};
   line-height: 1.6;
 
-  ${media.lessThan("hugee")`
+  ${media.lessThan("huge")`
   font-size: ${props => props.l || props.theme.font.size.l.l};
     line-height: ${props => props.lineHeight || 1.6};
   `}

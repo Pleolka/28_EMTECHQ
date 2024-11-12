@@ -8,7 +8,7 @@ import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
-import Seo from "../components/seo/Seo"
+import { Head as SeoHead } from "../components/seo/Seo"
 
 // Stylowanie dla personelu
 const PersonelWrapper = styled.div`
@@ -87,7 +87,6 @@ const ZajeciaDodatkowe = styled.div`
 export default function Onas({ data }) {
   return (
     <>
-      <Seo title="Kontakt" slug="/kontakt" />
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -100,10 +99,16 @@ export default function Onas({ data }) {
       </Baner>
       <Container>
         <Heading>
-          <h1>Aktualności</h1>
-          <p>Najnowsze informacje o wydarzeniach z naszego przedszkola</p>
+          <h1>O nas</h1>
+          <p>EmtechQ - solidna firma</p>
         </Heading>
       </Container>
     </>
   )
 }
+export const Head = () => (
+  <SeoHead
+    title="O nas - EmtechQ"
+    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+  />
+)

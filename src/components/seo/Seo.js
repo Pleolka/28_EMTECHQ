@@ -1,5 +1,4 @@
 import React from "react"
-import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 const Seo = ({
@@ -10,7 +9,7 @@ const Seo = ({
   titleMedia,
   imageFb,
 }) => {
-  const data = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -22,60 +21,99 @@ const Seo = ({
     }
   `)
 
-  const info = {
-    description:
-      "Rotkegel to rodzinna firma od pokoleń zajmujemy się produkcją roślin. Drzewa, krzewy, byliny, kwiaty - to nasza pasja. Podzielimy się naszym doświadczeniem z Tobą!",
-    keyWords: ["szkółka drzew, ogrodnictwo, producent roślin,"],
-    titleMedia: "Rotkegel - producent roślin najwyższej jakości.",
+  const defaultInfo = {
+    description: "EmtechQ - Podzielimy się naszym doświadczeniem z Tobą!",
+    keyWords: [
+      "spawanie",
+      "transport międzystanowiskowy",
+      "wózki do transportu",
+    ],
+    titleMedia: "EmtechQ - najwyższa jakość.",
     imageFb:
-      "https://images.unsplash.com/photo-1559749284-7a6971fd798e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    //twitterCreator: "",
-    //twitterID
-    //twitterUrl: "",
+      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    twitterCreator: "@EmtechQ",
+    twitterUrl: "https://twitter.com/EmtechQ",
   }
 
+  const {
+    description: defaultDescription,
+    keyWords,
+    titleMedia: defaultTitleMedia,
+    imageFb: defaultImageFb,
+    twitterCreator,
+    twitterUrl,
+  } = defaultInfo
+
+  const siteTitle = site.siteMetadata.title
+  const siteAuthor = site.siteMetadata.author
+  const siteUrl = site.siteMetadata.siteUrl
+
+  return {
+    siteTitle,
+    siteAuthor,
+    siteUrl,
+    title: title ?? siteTitle,
+    description: description ?? defaultDescription,
+    pageDescription: pageDescription ?? defaultDescription,
+    keyWords,
+    titleMedia: titleMedia ?? defaultTitleMedia,
+    imageFb: imageFb ?? defaultImageFb,
+    twitterCreator,
+    twitterUrl,
+    slug,
+  }
+}
+
+export default Seo
+
+export const Head = ({
+  title,
+  description,
+  pageDescription,
+  titleMedia,
+  imageFb,
+  slug,
+}) => {
+  const seo = Seo({
+    title,
+    description,
+    pageDescription,
+    titleMedia,
+    imageFb,
+    slug,
+  })
+
   return (
-    <Helmet>
+    <>
       <html lang="pl" />
-      <meta charset="utf-8" />
-      <title>{`${title}` || `${data.site.siteMetadata.title}`}</title>
-      <meta name="description" content={`${description}` || info.description} />
-      <meta name="keywords" content={info.keyWords.join(", ")} />
-      <meta name="author" content={data.site.siteMetadata.author} />
+      <meta charSet="utf-8" />
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <meta name="keywords" content={seo.keyWords.join(", ")} />
+      <meta name="author" content={seo.siteAuthor} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/*GOOGLE*/}
+      {/* Google Verification */}
       <meta
         name="google-site-verification"
         content="9AZ-eHzeWL6IN9bjC7VWYLJMNpfjCsa50ng5Bsi1blg"
       />
 
-      {/*FACEBOOK*/}
-      <meta
-        property="og:url"
-        content={`${data.site.siteMetadata.siteUrl}${slug || ""}`}
-      />
+      {/* Facebook Meta Tags */}
+      <meta property="og:url" content={`${seo.siteUrl}${seo.slug ?? ""}`} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta
-        property="og:description"
-        content={`${pageDescription}` || info.description}
-      />
-      <meta property="og:image" content={imageFb || info.imageFb} />
-
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.pageDescription} />
+      <meta property="og:image" content={seo.imageFb} />
       <meta property="og:locale" content="pl_PL" />
 
-      {/*TWITTER*/}
+      {/* Twitter Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={info.twitterCreator} />
-      <meta name="twitter:site" content={info.twitterUrl} />
-      <meta name="twitter:title" content={titleMedia || info.titleMedia} />
-      <meta
-        name="twitter:description"
-        content={description || info.description}
-      />
-      <meta name="twitter:image" content={imageFb || info.imageFb} />
-    </Helmet>
+      <meta name="twitter:creator" content={seo.twitterCreator} />
+      <meta name="twitter:site" content={seo.twitterUrl} />
+      <meta name="twitter:title" content={seo.titleMedia} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.imageFb} />
+    </>
   )
 }
-export default Seo

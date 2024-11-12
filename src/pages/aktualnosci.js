@@ -8,12 +8,11 @@ import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
-import Seo from "../components/seo/Seo"
+import { Head as SeoHead } from "../components/seo/Seo"
 
 export default function Aktualnosci({ data }) {
   return (
     <>
-      <Seo title="Kontakt" slug="/kontakt" />
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -33,3 +32,9 @@ export default function Aktualnosci({ data }) {
     </>
   )
 }
+export const Head = () => (
+  <SeoHead
+    title="Aktualnosci - EmtechQ"
+    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+  />
+)

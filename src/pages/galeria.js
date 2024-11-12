@@ -8,7 +8,7 @@ import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
-import Seo from "../components/seo/Seo"
+import { Head as SeoHead } from "../components/seo/Seo"
 
 const GaleriaWrapper = styled.div`
   margin-top: 3rem;
@@ -55,7 +55,6 @@ const GaleriaCard = styled.a`
 export default function Galeria({}) {
   return (
     <>
-      <Seo title="Kontakt" slug="/kontakt" />
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -68,10 +67,16 @@ export default function Galeria({}) {
       </Baner>
       <Container>
         <Heading>
-          <h1>Aktualności</h1>
-          <p>Najnowsze informacje o wydarzeniach z naszego przedszkola</p>
+          <h1>Galeria</h1>
+          <p>Zdjęcia naszych realizacji</p>
         </Heading>
       </Container>
     </>
   )
 }
+export const Head = () => (
+  <SeoHead
+    title="Galeria - EmtechQ"
+    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+  />
+)
