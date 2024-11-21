@@ -7,27 +7,30 @@ import styled from "styled-components"
 import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
+import Layout from "../layout/layout"
 import { Head as SeoHead } from "../components/seo/Seo"
 
 const Page404 = () => {
   return (
     <>
-      <Baner>
-        <StaticImage
-          src="../assets/images/baner4.jpg"
-          alt="Szkółka drzew z lotu ptaka"
-          layout="fullWidth"
-          objectFit="cover"
-          quality={100}
-          placeholder="blurred"
-        />
-      </Baner>
-      <Container>
-        <Heading>
-          <h1>404</h1>
-          <p>Upsss... Strona której szukasz nie ustnie.</p>
-        </Heading>
-      </Container>
+      <Layout>
+        <Baner>
+          <StaticImage
+            src="../assets/images/baner4.jpg"
+            alt="Szkółka drzew z lotu ptaka"
+            layout="fullWidth"
+            objectFit="cover"
+            quality={100}
+            placeholder="blurred"
+          />
+        </Baner>
+        <Container>
+          <Heading>
+            <h1>404</h1>
+            <p>Upsss... Strona której szukasz nie ustnie.</p>
+          </Heading>
+        </Container>
+      </Layout>
     </>
   )
 }

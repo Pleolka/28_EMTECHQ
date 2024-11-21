@@ -9,10 +9,11 @@ import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
+import Layout from "../layout/layout"
 
 export default function Aktualnosci({ data }) {
   return (
-    <>
+    <Layout>
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -26,10 +27,10 @@ export default function Aktualnosci({ data }) {
       <Container>
         <Heading>
           <h1>Aktualności</h1>
-          <p>Najnowsze informacje o wydarzeniach z naszego przedszkola</p>
+          <p>Najnowsze informacje o działaniu naszej firmy</p>
         </Heading>
       </Container>
-    </>
+    </Layout>
   )
 }
 export const Head = () => (

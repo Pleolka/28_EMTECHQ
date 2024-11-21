@@ -9,6 +9,7 @@ import { media } from "../utils/mediaquery"
 import { Heading, Container, Baner } from "../utils/utils"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
+import Layout from "../layout/layout"
 
 const GaleriaWrapper = styled.div`
   margin-top: 3rem;
@@ -54,7 +55,7 @@ const GaleriaCard = styled.a`
 
 export default function Galeria({}) {
   return (
-    <>
+    <Layout>
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -71,7 +72,7 @@ export default function Galeria({}) {
           <p>Zdjęcia naszych realizacji</p>
         </Heading>
       </Container>
-    </>
+    </Layout>
   )
 }
 export const Head = () => (

@@ -1,11 +1,7 @@
 import React from "react"
-import styled, { ThemeProvider } from "styled-components"
+import styled from "styled-components"
 //STYLES
-import { GlobalStyle } from "../utils/globalStye"
-import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
-//DATA
-import { info } from "../assets/data/kontakt"
 //COOKIES
 // import Cookie from "../components/cookie/Cookie"
 //NAVBAR
@@ -36,20 +32,16 @@ const Children = styled.div`
 
 const Layout = props => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <div>
-        <Navbar />
-        {/* <NavbarJezus /> */}
-        <Children>{props.children}</Children>
-        {/* 
+    <div>
+      <Navbar />
+      <Children>{props.children}</Children>
+      {/* 
         
         <Cookie />
         
         */}
-        <Footer />
-      </div>
-    </ThemeProvider>
+      <Footer />
+    </div>
   )
 }
 export default Layout

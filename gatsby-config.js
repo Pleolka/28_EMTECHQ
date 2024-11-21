@@ -108,26 +108,6 @@ module.exports = {
     /*GOOGLE FONT
 npm install gatsby-plugin-google-fonts --save
    */
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Yantramanav`,
-          `Yantramanav\:100`,
-          `Yantramanav\:300`,
-          `Yantramanav\:400`,
-          `Yantramanav\:500`,
-          `Yantramanav\:700`,
-          `Yantramanav\:900`,
-          `Ubuntu`,
-          `Ubuntu\:300`,
-          `Ubuntu\:400`,
-          `Ubuntu\:500`,
-          `Ubuntu\:700`,
-        ],
-        display: "swap",
-      },
-    },
 
     /* COOKIE
    npm install --save gatsby-plugin-gdpr-cookies

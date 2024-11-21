@@ -8,6 +8,7 @@ import { media } from "../utils/mediaquery"
 import { Section2, ContainerMob, Baner, Heading } from "../utils/utils"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
+import Layout from "../layout/layout"
 
 const Info = styled.div`
   margin-top: 4rem;
@@ -65,7 +66,7 @@ const MapMobile = styled.div`
 
 export default function Kontakt({ data }) {
   return (
-    <div>
+    <Layout>
       <Baner>
         <StaticImage
           src="../assets/images/baner4.jpg"
@@ -142,7 +143,7 @@ export default function Kontakt({ data }) {
           </MapMobile>
         </ContainerMob>
       </Section2>
-    </div>
+    </Layout>
   )
 }
 export const Head = () => (
