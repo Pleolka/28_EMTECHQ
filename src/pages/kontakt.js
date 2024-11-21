@@ -11,14 +11,19 @@ import { Head as SeoHead } from "../components/seo/Seo"
 import Layout from "../layout/layout"
 
 const Info = styled.div`
-  margin-top: 4rem;
+  margin-top: 12rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 7rem;
 
+  ${media.lessThan("medium")`
+    margin-top: 2rem;
+  `}
+
   ${media.lessThan("small")`
     grid-template-columns: 1fr;
     grid-row-gap: 1rem;
+    margin-top: 0;
   `}
 
   p {
@@ -45,6 +50,9 @@ const TextWrapper = styled.div`
   label {
     margin-bottom: 1rem;
     margin-top: 3rem;
+    ${media.lessThan("small")`
+    margin-top: 0;
+  `}
   }
 `
 
@@ -77,7 +85,7 @@ export default function Kontakt({ data }) {
           placeholder="blurred"
         />
       </Baner>
-      <ContainerMob mt="4rem" mtMobile=".5rem">
+      <ContainerMob>
         <Heading className="white">
           <h1>Zostańmy w kontakcie!</h1>
           <p>
@@ -88,7 +96,6 @@ export default function Kontakt({ data }) {
         </Heading>
       </ContainerMob>
       <Section2
-        pt={6}
         pb={3}
         tabIndex="0"
         role="contentinfo"

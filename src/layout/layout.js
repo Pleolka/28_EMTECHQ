@@ -30,9 +30,15 @@ const Children = styled.div`
   `}
 `
 
+const LayoutWrapper = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+`
+
 const Layout = props => {
   return (
-    <div>
+    <LayoutWrapper>
       <Navbar />
       <Children>{props.children}</Children>
       {/* 
@@ -41,7 +47,7 @@ const Layout = props => {
         
         */}
       <Footer />
-    </div>
+    </LayoutWrapper>
   )
 }
 export default Layout
