@@ -1,115 +1,157 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-//DATA
-import { info, godziny } from "../assets/data/kontakt"
 //STYLES
 import styled from "styled-components"
 import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
-import { Heading, Container, Baner } from "../utils/utils"
+import { ContainerMob } from "../utils/utils"
+import {
+  PageHero,
+  HeroContent,
+  HeroTag,
+  HeroH1,
+  BtnPrimary,
+  SectionLight,
+  SectionDark,
+  SectionWhite,
+  SectionTitle,
+  SectionLead,
+  CtaWrapper,
+  CtaTitle,
+  CtaText,
+} from "../utils/pageStyles"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
 import Layout from "../layout/layout"
 
-// Stylowanie dla personelu
-const PersonelWrapper = styled.div`
-  margin-top: 3rem;
+const TwoCol = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 2rem;
-  row-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
 
   ${media.lessThan("medium")`
-    grid-template-columns: repeat(2, 1fr);
-  `}
-
-  ${media.lessThan("small")`
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+    gap: 2rem;
   `}
 `
 
-const PersonelCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid ${theme.color.base};
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  overflow: hidden;
-
-  &:hover {
-    background-color: ${theme.color.baseLight};
-  }
-`
-
-const PersonalCardHeader = styled.div`
-  padding-top: 2rem;
-  height: 120px;
-  margin-bottom: 1rem;
-  h5,
-  p {
-    text-align: center;
-  }
-`
-
-// Stylowanie dla zajęć dodatkowych
-const ZajeciaDodatkoweWrapper = styled.div`
-  margin-top: 3rem;
+const CheckGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 2rem;
-  row-gap: 2rem;
-
-  ${media.lessThan("medium")`
-    grid-template-columns: repeat(1, 1fr);
-  `}
+  gap: 1.2rem;
+  margin-top: 2rem;
 
   ${media.lessThan("small")`
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   `}
 `
 
-const ZajeciaDodatkowe = styled.div`
-  p:nth-of-type(1),
-  h5,
-  li {
-    text-align: center;
-  }
-
-  ul {
-    margin-top: 1rem;
-    li {
-      list-style-type: none;
-    }
-  }
+const CheckItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
 `
 
-export default function Onas({ data }) {
+const CheckMark = styled.span`
+  color: ${theme.color.base};
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1.3;
+`
+
+export default function Onas() {
   return (
     <Layout>
-      <Baner>
+      <PageHero>
         <StaticImage
-          src="../assets/images/baner4.jpg"
-          alt="Szkółka drzew z lotu ptaka"
+          src="../assets/images/baner2.jpg"
+          alt="EMTECHQ – o firmie"
           layout="fullWidth"
           objectFit="cover"
-          quality={100}
+          quality={90}
           placeholder="blurred"
         />
-      </Baner>
-      <Container>
-        <Heading>
-          <h1>O nas</h1>
-          <p>EmtechQ - solidna firma</p>
-        </Heading>
-      </Container>
+        <HeroContent>
+          <HeroTag>Poznaj nas</HeroTag>
+          <HeroH1>O firmie</HeroH1>
+        </HeroContent>
+      </PageHero>
+
+      {/* KIM JESTEŚMY */}
+      <SectionLight>
+        <ContainerMob>
+          <SectionTitle>Kim jesteśmy</SectionTitle>
+          <TwoCol>
+            <p>
+              Firma EMTECHQ powstała z myślą o usprawnianiu pracy w zakładach
+              produkcyjnych. Specjalizujemy się w projektowaniu i produkcji
+              indywidualnych rozwiązań dla transportu wewnętrznego oraz
+              wyposażenia stanowisk pracy.
+            </p>
+            <p>
+              Realizujemy projekty od fazy koncepcji aż po gotowe wdrożenie —
+              zajmujemy się analizą potrzeb klienta, projektowaniem,
+              prototypowaniem oraz produkcją seryjną. Każde nasze rozwiązanie
+              jest tworzone z myślą o konkretnym kliencie i jego procesie.
+            </p>
+          </TwoCol>
+        </ContainerMob>
+      </SectionLight>
+
+      {/* NASZE PODEJŚCIE */}
+      <SectionWhite>
+        <ContainerMob>
+          <SectionTitle>Nasze podejście</SectionTitle>
+          <SectionLead>
+            Nie działamy schematycznie. Każde zlecenie traktujemy indywidualnie
+            — analizujemy proces, potrzeby oraz warunki pracy, aby zaproponować
+            rozwiązanie najlepiej dopasowane do klienta. Wierzymy, że dobry
+            projekt zaczyna się od dobrego zrozumienia problemu.
+          </SectionLead>
+        </ContainerMob>
+      </SectionWhite>
+
+      {/* CO NAS WYRÓŻNIA */}
+      <SectionLight>
+        <ContainerMob>
+          <SectionTitle>Co nas wyróżnia</SectionTitle>
+          <CheckGrid>
+            {[
+              "Elastyczność i brak gotowych schematów",
+              "Doświadczenie w produkcji rozwiązań specjalistycznych",
+              "Szybkie reagowanie i krótkie terminy realizacji",
+              "Nastawienie na realne usprawnienie procesów produkcyjnych",
+              "Bezpłatny dojazd i analiza potrzeb u klienta",
+              "Zgodność z wymaganiami BHP i ergonomią pracy",
+            ].map(text => (
+              <CheckItem key={text}>
+                <CheckMark>✔</CheckMark>
+                <p style={{ margin: 0 }}>{text}</p>
+              </CheckItem>
+            ))}
+          </CheckGrid>
+        </ContainerMob>
+      </SectionLight>
+
+      {/* MISJA */}
+      <SectionDark>
+        <CtaWrapper>
+          <CtaTitle>Nasza misja</CtaTitle>
+          <CtaText>
+            Tworzyć rozwiązania, które zwiększają efektywność produkcji,
+            poprawiają ergonomię pracy i ograniczają przestoje.
+          </CtaText>
+          <BtnPrimary to="/kontakt">Skontaktuj się z nami</BtnPrimary>
+        </CtaWrapper>
+      </SectionDark>
     </Layout>
   )
 }
+
 export const Head = () => (
   <SeoHead
-    title="O nas - EmtechQ"
-    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+    title="O firmie – EMTECHQ"
+    description="Firma EMTECHQ specjalizuje się w projektowaniu i produkcji indywidualnych rozwiązań dla transportu wewnętrznego oraz wyposażenia stanowisk pracy."
   />
 )

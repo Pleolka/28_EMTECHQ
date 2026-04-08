@@ -1,39 +1,41 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 //DATA
-import { info, godziny } from "../assets/data/kontakt"
+import { info } from "../assets/data/kontakt"
 //STYLES
 import styled from "styled-components"
 import { media } from "../utils/mediaquery"
-import { Section2, ContainerMob, Baner, Heading } from "../utils/utils"
+import { ContainerMob } from "../utils/utils"
+import {
+  PageHero,
+  HeroContent,
+  HeroTag,
+  HeroH1,
+  HeroSub,
+  SectionWhite,
+} from "../utils/pageStyles"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
 import Layout from "../layout/layout"
 
 const Info = styled.div`
-  margin-top: 12rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 7rem;
+  gap: 4rem;
 
   ${media.lessThan("medium")`
-    margin-top: 2rem;
-  `}
-
-  ${media.lessThan("small")`
     grid-template-columns: 1fr;
-    grid-row-gap: 1rem;
-    margin-top: 0;
+    gap: 2rem;
   `}
-
-  p {
-    white-space: pre-wrap;
-  }
 
   iframe {
-    //filter: grayscale(100%);
-    ${media.lessThan("small")`
-      display: none;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border: none;
+
+    ${media.lessThan("medium")`
+      min-height: 280px;
     `}
   }
 `
@@ -50,73 +52,47 @@ const TextWrapper = styled.div`
   label {
     margin-bottom: 1rem;
     margin-top: 3rem;
+
     ${media.lessThan("small")`
-    margin-top: 0;
-  `}
+      margin-top: 0;
+    `}
   }
 `
 
-const MapMobile = styled.div`
-  margin-top: 4rem;
-  > div {
-    height: 300px;
-  }
-
-  iframe {
-    //filter: grayscale(100%);
-    height: 300px;
-  }
-
-  ${media.greaterThan("medium")`
-    display: none;
-  `}
-`
-
-export default function Kontakt({ data }) {
+export default function Kontakt() {
   return (
     <Layout>
-      <Baner>
+      {/* HERO */}
+      <PageHero>
         <StaticImage
           src="../assets/images/baner4.jpg"
-          alt="Szkółka drzew z lotu ptaka"
+          alt="EMTECHQ – kontakt"
           layout="fullWidth"
           objectFit="cover"
-          quality={100}
+          quality={90}
           placeholder="blurred"
         />
-      </Baner>
-      <ContainerMob>
-        <Heading className="white">
-          <h1>Zostańmy w kontakcie!</h1>
-          <p>
-            Skontaktuj się z nami, z chęcią odpowiemy na Twoje pytania.
-            <br />
-            <b>Czekamy na Ciebie.</b>
-          </p>
-        </Heading>
-      </ContainerMob>
-      <Section2
-        pb={3}
-        tabIndex="0"
-        role="contentinfo"
-        ariaLabel="Dane kontaktowe i mapa dojazdu"
-      >
+        <HeroContent>
+          <HeroTag>Skontaktuj się z nami</HeroTag>
+          <HeroH1>Kontakt</HeroH1>
+          <HeroSub>
+            Zadzwoń lub napisz — dojazd do klienta jest bezpłatny.
+          </HeroSub>
+        </HeroContent>
+      </PageHero>
+
+      {/* DANE + MAPA */}
+      <SectionWhite>
         <ContainerMob>
           <Info>
             <iframe
-              title="map"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight="0"
-              marginWidth="0"
+              title="Mapa dojazdu EMTECHQ"
               src="https://www.openstreetmap.org/export/embed.html?bbox=18.95487070083618%2C49.95783977359637%2C18.969032764434818%2C49.964120555789364&amp;layer=mapnik&amp;marker=49.960980267116625%2C18.961951732635498"
+              scrolling="no"
             />
-
             <TextWrapper>
               <label>Kontakt</label>
-              <h4>+48 {info.tel}</h4>
+              <h4>{info.tel}</h4>
               <h4>{info.mail}</h4>
 
               <label>Adres</label>
@@ -132,30 +108,17 @@ export default function Kontakt({ data }) {
                 {info.kod} {info.miasto}
               </p>
               <p>{info.woj}</p>
-              <p>{info.kraj}</p>
             </TextWrapper>
           </Info>
-
-          <MapMobile>
-            <iframe
-              title="mapMobile"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight="0"
-              marginWidth="0"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=18.95487070083618%2C49.95783977359637%2C18.969032764434818%2C49.964120555789364&amp;layer=mapnik&amp;marker=49.960980267116625%2C18.961951732635498"
-            />
-          </MapMobile>
         </ContainerMob>
-      </Section2>
+      </SectionWhite>
     </Layout>
   )
 }
+
 export const Head = () => (
   <SeoHead
-    title="Kontakt - EmtechQ"
-    description="EmtechQ - profesjonalne usługi spawalnicze i transportowe."
+    title="Kontakt – EMTECHQ"
+    description="Skontaktuj się z EMTECHQ. Zadzwoń lub napisz — bezpłatnie przyjedziemy do Ciebie i omówimy rozwiązanie dla Twojego zakładu."
   />
 )

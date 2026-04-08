@@ -1,150 +1,31 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
 //STYLES
 import styled from "styled-components"
 import { theme } from "../utils/theme"
 import { media } from "../utils/mediaquery"
-import { ContainerMob, Baner } from "../utils/utils"
+import { ContainerMob } from "../utils/utils"
+import {
+  PageHero,
+  HeroContent,
+  HeroTag,
+  HeroH1,
+  HeroSub,
+  HeroList,
+  BtnPrimary,
+  SectionLight,
+  SectionDark,
+  SectionWhite,
+  SectionTitle,
+  SectionLead,
+  CtaWrapper,
+  CtaTitle,
+  CtaText,
+} from "../utils/pageStyles"
 //COMPONENTS
 import { Head as SeoHead } from "../components/seo/Seo"
 import Layout from "../layout/layout"
 
-// --- HERO ---
-const HeroWrapper = styled.div`
-  position: relative;
-  min-height: 450px;
-  display: flex;
-  align-items: flex-end;
-
-  ${media.lessThan("medium")`
-    min-height: 360px;
-  `}
-  ${media.lessThan("small")`
-    min-height: 240px;
-  `}
-`
-
-const HeroContent = styled(ContainerMob)`
-  position: relative;
-  z-index: 10;
-  padding-bottom: 3rem;
-  padding-top: 6rem;
-
-  ${media.lessThan("medium")`
-    padding-bottom: 2rem;
-    padding-top: 4rem;
-  `}
-`
-
-const HeroTag = styled.p`
-  color: ${theme.color.baseLight};
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-`
-
-const HeroH1 = styled.h1`
-  color: ${theme.color.white};
-  font-family: ${theme.font.special};
-  margin-bottom: 1rem;
-  max-width: 700px;
-
-  ${media.lessThan("small")`
-    font-size: 28px;
-  `}
-`
-
-const HeroSub = styled.p`
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 500px;
-  font-size: 18px;
-  margin-bottom: 2rem;
-
-  ${media.lessThan("small")`
-    font-size: 16px;
-  `}
-`
-
-const HeroList = styled.ul`
-  list-style: none;
-  margin: 0 0 2rem 0;
-  padding: 0;
-
-  li {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 0.4rem;
-    font-size: 17px;
-
-    &::before {
-      content: "→ ";
-      color: ${theme.color.baseLight};
-      font-weight: 700;
-    }
-  }
-`
-
-const BtnPrimary = styled(Link)`
-  display: inline-block;
-  background-color: ${theme.color.base};
-  color: ${theme.color.white};
-  padding: 0.9rem 2.2rem;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  text-decoration: none;
-
-  &:hover {
-    background-color: ${theme.color.baseDark};
-    color: ${theme.color.white};
-  }
-`
-
-// --- SECTIONS ---
-const SectionLight = styled.section`
-  background-color: #f8f8f8;
-  padding: 5rem 0;
-
-  ${media.lessThan("medium")`
-    padding: 3rem 0;
-  `}
-`
-
-const SectionDark = styled.section`
-  background-color: #1a1a1a;
-  padding: 5rem 0;
-
-  ${media.lessThan("medium")`
-    padding: 3rem 0;
-  `}
-`
-
-const SectionWhite = styled.section`
-  background-color: #fff;
-  padding: 5rem 0;
-
-  ${media.lessThan("medium")`
-    padding: 3rem 0;
-  `}
-`
-
-const SectionTitle = styled.h2`
-  font-family: ${theme.font.special};
-  color: ${theme.color.base};
-  margin-bottom: 0.5rem;
-`
-
-const SectionLead = styled.p`
-  font-size: 18px;
-  color: ${theme.color.grey};
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-`
-
-// --- CO ROBIMY ---
 const ServiceGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -166,18 +47,6 @@ const ServiceCard = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 `
 
-const ServiceCardTitle = styled.h5`
-  margin-bottom: 0.5rem;
-  color: #1a1a1a;
-`
-
-const ServiceCardText = styled.p`
-  font-size: 15px;
-  color: ${theme.color.grey};
-  line-height: 1.6;
-`
-
-// --- DLACZEGO MY ---
 const CheckGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -203,14 +72,6 @@ const CheckMark = styled.span`
   line-height: 1.3;
 `
 
-const CheckText = styled.p`
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.4;
-  margin: 0;
-`
-
-// --- JAK PRACUJEMY SKRÓT ---
 const StepsRow = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -239,42 +100,11 @@ const StepNumber = styled.div`
   margin-bottom: 0.5rem;
 `
 
-const StepTitle = styled.h5`
-  color: #1a1a1a;
-  margin-bottom: 0.3rem;
-`
-
-const StepDesc = styled.p`
-  font-size: 14px;
-  color: ${theme.color.grey};
-  line-height: 1.5;
-`
-
-// --- CTA ---
-const CtaWrapper = styled.div`
-  text-align: center;
-  padding: 4rem 1rem;
-`
-
-const CtaTitle = styled.h2`
-  font-family: ${theme.font.special};
-  color: ${theme.color.white};
-  margin-bottom: 1rem;
-`
-
-const CtaText = styled.p`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 18px;
-  margin-bottom: 2rem;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-`
-
 export default function Home() {
   return (
     <Layout>
-      <Baner>
+      {/* HERO */}
+      <PageHero>
         <StaticImage
           src="../assets/images/baner.jpg"
           alt="EMTECHQ – rozwiązania dla przemysłu"
@@ -283,9 +113,6 @@ export default function Home() {
           quality={90}
           placeholder="blurred"
         />
-      </Baner>
-      {/* HERO */}
-      <HeroWrapper>
         <HeroContent>
           <HeroTag>Indywidualne rozwiązania dla przemysłu</HeroTag>
           <HeroH1>EMTECHQ</HeroH1>
@@ -300,7 +127,7 @@ export default function Home() {
           </HeroList>
           <BtnPrimary to="/kontakt">Skontaktuj się z nami</BtnPrimary>
         </HeroContent>
-      </HeroWrapper>
+      </PageHero>
 
       {/* CO ROBIMY */}
       <SectionLight>
@@ -313,46 +140,46 @@ export default function Home() {
           </SectionLead>
           <ServiceGrid>
             <ServiceCard>
-              <ServiceCardTitle>Transport międzyoperacyjny</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Transport międzyoperacyjny</h5>
+              <p>
                 Wózki transportowe, koleby i systemy przepływu detali
                 dostosowane do Twojego procesu produkcyjnego.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
             <ServiceCard>
-              <ServiceCardTitle>Regały i pojemniki</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Regały i pojemniki</h5>
+              <p>
                 Regały, stojaki, pojemniki i kontenery usprawniające organizację
                 materiałów i detali.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
             <ServiceCard>
-              <ServiceCardTitle>Stanowiska robocze</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Stanowiska robocze</h5>
+              <p>
                 Stoły robocze i stanowiska ergonomiczne projektowane pod
                 konkretne operacje produkcyjne.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
             <ServiceCard>
-              <ServiceCardTitle>Bezpieczeństwo</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Bezpieczeństwo</h5>
+              <p>
                 Bariery, odbojnice i elementy chroniące pracowników oraz
                 infrastrukturę hali.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
             <ServiceCard>
-              <ServiceCardTitle>Konstrukcje specjalne</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Konstrukcje specjalne</h5>
+              <p>
                 Niestandardowe elementy wspomagające produkcję — od prostych
                 detali po złożone oprzyrządowanie.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
             <ServiceCard>
-              <ServiceCardTitle>Usługi technologiczne</ServiceCardTitle>
-              <ServiceCardText>
+              <h5>Usługi technologiczne</h5>
+              <p>
                 Cięcie laserem, spawanie MIG, lakierowanie i cynkowanie — od
                 projektu do gotowego wyrobu.
-              </ServiceCardText>
+              </p>
             </ServiceCard>
           </ServiceGrid>
         </ContainerMob>
@@ -369,34 +196,19 @@ export default function Home() {
             produkcji.
           </SectionLead>
           <CheckGrid>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>Indywidualne podejście do każdego projektu</CheckText>
-            </CheckItem>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>
-                Bezpłatny dojazd i analiza potrzeb u klienta
-              </CheckText>
-            </CheckItem>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>
-                Kompleksowa realizacja: projekt + prototyp + produkcja
-              </CheckText>
-            </CheckItem>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>Szybka realizacja i krótkie terminy</CheckText>
-            </CheckItem>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>Zgodność z wymaganiami BHP i ergonomią</CheckText>
-            </CheckItem>
-            <CheckItem>
-              <CheckMark>✔</CheckMark>
-              <CheckText>Nastawienie na realne usprawnienie procesów</CheckText>
-            </CheckItem>
+            {[
+              "Indywidualne podejście do każdego projektu",
+              "Bezpłatny dojazd i analiza potrzeb u klienta",
+              "Kompleksowa realizacja: projekt + prototyp + produkcja",
+              "Szybka realizacja i krótkie terminy",
+              "Zgodność z wymaganiami BHP i ergonomią",
+              "Nastawienie na realne usprawnienie procesów",
+            ].map(text => (
+              <CheckItem key={text}>
+                <CheckMark>✔</CheckMark>
+                <p style={{ color: "rgba(255,255,255,0.9)", margin: 0 }}>{text}</p>
+              </CheckItem>
+            ))}
           </CheckGrid>
         </ContainerMob>
       </SectionDark>
@@ -410,37 +222,18 @@ export default function Home() {
             rozwiązania.
           </SectionLead>
           <StepsRow>
-            <StepBox>
-              <StepNumber>01</StepNumber>
-              <StepTitle>Analiza potrzeb</StepTitle>
-              <StepDesc>
-                Bezpłatnie przyjeżdżamy do klienta i poznajemy problem oraz
-                proces produkcyjny.
-              </StepDesc>
-            </StepBox>
-            <StepBox>
-              <StepNumber>02</StepNumber>
-              <StepTitle>Projekt rozwiązania</StepTitle>
-              <StepDesc>
-                Na podstawie zebranych informacji przygotowujemy koncepcję i
-                projekt.
-              </StepDesc>
-            </StepBox>
-            <StepBox>
-              <StepNumber>03</StepNumber>
-              <StepTitle>Prototyp i uzgodnienia</StepTitle>
-              <StepDesc>
-                Dopasowujemy rozwiązanie do wymagań i wprowadzamy ewentualne
-                zmiany.
-              </StepDesc>
-            </StepBox>
-            <StepBox>
-              <StepNumber>04</StepNumber>
-              <StepTitle>Produkcja i wdrożenie</StepTitle>
-              <StepDesc>
-                Realizujemy projekt i dostarczamy gotowe rozwiązanie.
-              </StepDesc>
-            </StepBox>
+            {[
+              { n: "01", t: "Analiza potrzeb", d: "Bezpłatnie przyjeżdżamy do klienta i poznajemy problem oraz proces produkcyjny." },
+              { n: "02", t: "Projekt rozwiązania", d: "Na podstawie zebranych informacji przygotowujemy koncepcję i projekt." },
+              { n: "03", t: "Prototyp i uzgodnienia", d: "Dopasowujemy rozwiązanie do wymagań i wprowadzamy ewentualne zmiany." },
+              { n: "04", t: "Produkcja i wdrożenie", d: "Realizujemy projekt i dostarczamy gotowe rozwiązanie." },
+            ].map(s => (
+              <StepBox key={s.n}>
+                <StepNumber>{s.n}</StepNumber>
+                <h5>{s.t}</h5>
+                <p>{s.d}</p>
+              </StepBox>
+            ))}
           </StepsRow>
           <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
             <BtnPrimary to="/jakpracujemy">Dowiedz się więcej</BtnPrimary>

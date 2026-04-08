@@ -98,8 +98,8 @@ h4,
 h5,
 h6 {
     font-family: ${({ theme }) => theme.font.header};
-    color: ${({ theme }) => theme.color.heading};
-    font-weight: ${props => props.weight || props.theme.font.weightH};
+    color: ${({ color, theme }) => color || theme.color.heading};
+    font-weight: ${({ weight, theme }) => weight || theme.font.weightH};
     margin: 0;
 }
 

@@ -48,7 +48,7 @@ const Nav = styled.nav`
     }
   }
 
-  ${media.lessThan("small")`
+  ${media.lessThan("medium")`
     display: none;
   `}
 `
