@@ -4,16 +4,20 @@ export const list = [
     path: "/",
   },
   {
-    name: "Aktualności",
-    path: "/aktualnosci",
-  },
-  {
-    name: "Galeria",
-    path: "/galeria",
-  },
-  {
-    name: "O nas",
+    name: "O firmie",
     path: "/onas",
+  },
+  {
+    name: "Oferta",
+    path: "/oferta",
+  },
+  {
+    name: "Realizacje",
+    path: "/realizacje",
+  },
+  {
+    name: "Jak pracujemy",
+    path: "/jakpracujemy",
   },
   {
     name: "Kontakt",
